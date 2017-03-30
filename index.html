@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width = 640,target-densitydpi=device-dpi, user-scalable=no">
+	<meta content="telephone=no" name="format-detection">
+	<title>音乐播放器</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="all">
+		<div class="box" id="music1">
+			<!--封面-->
+			<div class="musicPic"><img src="images/pic.png" alt=""></div>
+			<!--歌曲区域-->
+			<div class="songBox">
+				<!--歌曲-->
+				<audio class="audio" autoplay="autoplay" src=""></audio>
+				<!--歌曲信息-->
+				<div class="info">
+					<h2 class="songName">后会无期</h2>
+					<p class="singer">邓紫棋</p>
+					<p class="channel">频道:流行歌曲</p>
+				</div>
+				<!--进度-->
+				<div class="process">
+					<div class="songTime">
+						<span class="curTime">00:00</span>
+						<span>|</span>
+						<span class="allTime">00:00</span>
+					</div>
+					<div class="processAll"></div>
+					<div class="processNow"></div>
+					
+				</div>
+				<!--按钮-->
+				<div class="btn">
+					<!--歌词-->
+					<div class="lrcBtn" title="显示歌词"></div>
+					<!--更换频道-->
+					<div class="channelBtn" title="更换频道">
+						<select name="channel" id=""></select>
+					</div>
+					<!--播放/暂停-->
+					<div class="playBtn" data-play="play" title="播放/暂停"></div>
+					<!--下一首-->
+					<div class="nextBtn" title="下一首"></div>
+					<!--音量-->
+					<div class="volumeBox" title="音量">
+						<div class="volumeBtn"></div>
+						<div class="volumeBar">
+							<div class="volumeAll"></div>
+							<div class="volumeNow"></div>
+							<div class="volumeTextBox">
+								<p class="volumeText">
+									<span>50</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--歌词-->
+		<div class="lrcBox">
+			<div class="lrcClose"></div>
+
+			<div class="lrc"></div>
+		</div>
+	</div>
+	
+<script src="js/jquery.min.1.11.3.js"></script>
+<script src="js/music.js"></script>
+</body>
+</html>
