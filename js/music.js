@@ -4,6 +4,7 @@ $(function(){
 	song1.init();
 
 })
+
 /**
  *	构造函数
  */
@@ -27,8 +28,9 @@ Music.prototype.init = function(){
 Music.prototype.getChannel = function(){
 	var _this = this;
 	$.ajax({
+		dataType: 'jsonp',
 		url:"http://api.jirengu.com/fm/getChannels.php",
-		dataType:"json",
+//		dataType:"json",
 		Method:"get",
 		success:function(res){
 			var channels = res.channels;
@@ -68,8 +70,9 @@ Music.prototype.getMusic = function(channel){
 	var _this = this;
 //	console.log(_this.readStorage("channel_id"));
 	$.ajax({
+		dataType: 'jsonp',
 		url:"http://api.jirengu.com/fm/getSong.php",
-		dataType:"json",
+//		dataType:"json",
 		Method:"get",
 		data:{
 			"channel":channel
@@ -114,8 +117,9 @@ Music.prototype.getMusic = function(channel){
 Music.prototype.getLrc = function(sid){
 	var _this =this;
 	$.ajax({
+		dataType: 'jsonp',
 		url:"http://api.jirengu.com/fm/getLyric.php",
-		dataType:"json",
+//		dataType:"json",
 		Method:"get",
 		data:{
 			"sid":sid
