@@ -28,17 +28,12 @@ Music.prototype.init = function(){
 Music.prototype.getChannel = function(){
 	var _this = this;
 	$.ajax({
-		dataType: 'jsonp',
-		url:"http://api.jirengu.com/fm/getChannels.php",
-//		dataType:"json",
-		jsonp: "callback",	//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
-		jsonpCallback:"callBackFun",	//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+		url: "http://api.jirengu.com/fm/getChannels.php",
+		dataType:"json",
 		Method:"get",
 		success:function(res){
-			var dataStr = JSON.stringify(res);
-			var dataObj = $.parseJSON(dataStr);
-			console.log(res);
-			var channels = dataObj.channels;
+			var channels = res.channels;
+			
 			var channelNum = Math.floor(Math.random()*channels.length);
 			
 			var channelName = channels[channelNum].name;
@@ -75,22 +70,14 @@ Music.prototype.getMusic = function(channel){
 	var _this = this;
 //	console.log(_this.readStorage("channel_id"));
 	$.ajax({
-		dataType: 'jsonp',
 		url:"http://api.jirengu.com/fm/getSong.php",
-//		dataType:"json",
-		jsonp: "callback",	//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
-		jsonpCallback:"callBackFun",	//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+		dataType:"json",
 		Method:"get",
 		data:{
 			"channel":channel
 		},
 		success:function(res){
-			var dataStr = JSON.stringify(res);
-			var dataObj = $.parseJSON(dataStr);
-			console.log(typeof dataStr);
-			console.log(dataStr);
-			console.log(dataObj);
-			var resource = dataObj.song[0];
+			var resource = res.song[0];
 
 			var url = resource.url,
 				sid = resource.sid,
@@ -129,7 +116,6 @@ Music.prototype.getMusic = function(channel){
 Music.prototype.getLrc = function(sid){
 	var _this =this;
 	$.ajax({
-//		dataType: 'jsonp',
 		url:"http://api.jirengu.com/fm/getLyric.php",
 		dataType:"json",
 		Method:"get",
@@ -137,7 +123,6 @@ Music.prototype.getLrc = function(sid){
 			"sid":sid
 		},
 		success:function(res){
-			console.log('歌词'+res);
 			_this.readLrc(res.lyric);
 			_this.player.off("timeupdate").on("timeupdate", function() {
 				_this.lrcMove();
