@@ -31,10 +31,14 @@ Music.prototype.getChannel = function(){
 		dataType: 'jsonp',
 		url:"http://api.jirengu.com/fm/getChannels.php",
 //		dataType:"json",
+		jsonp: "callback",	//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+		jsonpCallback:"callBackFun",	//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
 		Method:"get",
 		success:function(res){
-			console.log('频道'+res);
-			var channels = res.channels;
+			var dataStr = JSON.stringify(res);
+			var dataObj = $.parseJSON(dataStr);
+			console.log(res);
+			var channels = dataObj.channels;
 			var channelNum = Math.floor(Math.random()*channels.length);
 			
 			var channelName = channels[channelNum].name;
