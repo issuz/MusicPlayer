@@ -28,7 +28,7 @@ Music.prototype.init = function(){
 Music.prototype.getChannel = function(){
 	var _this = this;
 	$.ajax({
-		url: "http://api.jirengu.com/fm/getChannels.php",
+		url: "//api.jirengu.com/fm/getChannels.php",
 		// dataType:"json",
 		// Method:"get",
 		type:"get",
@@ -74,7 +74,7 @@ Music.prototype.getMusic = function(channel){
 	var _this = this;
 //	console.log(_this.readStorage("channel_id"));
 	$.ajax({
-		url:"http://api.jirengu.com/fm/getSong.php",
+		url:"//api.jirengu.com/fm/getSong.php",
 		// dataType:"json",
 		// Method:"get",
         type:"get",
@@ -124,7 +124,7 @@ Music.prototype.getMusic = function(channel){
 Music.prototype.getLrc = function(sid){
 	var _this =this;
 	$.ajax({
-		url:"http://api.jirengu.com/fm/getLyric.php",
+		url:"//api.jirengu.com/fm/getLyric.php",
 		// dataType:"json",
 		// Method:"get",
         type:"get",
