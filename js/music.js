@@ -24,11 +24,13 @@ Music.prototype.init = function(){
 };
 /**
  *	获取频道
+ *	apiURL-[http://api.jirengu.com/]
  */
 Music.prototype.getChannel = function(){
 	var _this = this;
 	$.ajax({
-		url: "http://api.jirengu.com/fm/getChannels.php",
+//		url: "http://api.jirengu.com/fm/getChannels.php",
+		url: "https://jirenguapi.applinzi.com/fm/getChannels.php",
 		dataType:"json",
 		type:"get",
         // dataType: "jsonp",
@@ -73,7 +75,8 @@ Music.prototype.getMusic = function(channel){
 	var _this = this;
 //	console.log(_this.readStorage("channel_id"));
 	$.ajax({
-		url:"http://api.jirengu.com/fm/getSong.php",
+//		url:"http://api.jirengu.com/fm/getSong.php",
+		url:"https://jirenguapi.applinzi.com/fm/getSong.php",
 		dataType:"json",
         type:"get",
         // dataType: "jsonp",
@@ -122,7 +125,8 @@ Music.prototype.getMusic = function(channel){
 Music.prototype.getLrc = function(sid){
 	var _this =this;
 	$.ajax({
-		url:"http://api.jirengu.com/fm/getLyric.php",
+//		url:"http://api.jirengu.com/fm/getLyric.php",
+		url:"https://jirenguapi.applinzi.com/fm/getLyric.php",
 		dataType:"json",
 		type:"get",
 		data:{
