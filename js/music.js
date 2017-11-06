@@ -29,13 +29,10 @@ Music.prototype.init = function(){
 Music.prototype.getChannel = function(){
 	var _this = this;
 	$.ajax({
-//		url: "http://api.jirengu.com/fm/getChannels.php",
+		//url: "http://api.jirengu.com/fm/getChannels.php",
 		url: "https://jirenguapi.applinzi.com/fm/getChannels.php",
 		dataType:"json",
 		type:"get",
-        // dataType: "jsonp",
-        // jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-        // jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
 		success:function(res){
 			var channels = res.channels;
 			
@@ -75,13 +72,10 @@ Music.prototype.getMusic = function(channel){
 	var _this = this;
 //	console.log(_this.readStorage("channel_id"));
 	$.ajax({
-//		url:"http://api.jirengu.com/fm/getSong.php",
+		//url:"http://api.jirengu.com/fm/getSong.php",
 		url:"https://jirenguapi.applinzi.com/fm/getSong.php",
 		dataType:"json",
         type:"get",
-        // dataType: "jsonp",
-        // jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-        // jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
 		data:{
 			"channel":channel
 		},
@@ -113,7 +107,7 @@ Music.prototype.getMusic = function(channel){
 			//获取歌词
 			_this.getLrc(sid);
 			//歌词运动	
-//			console.log(curTime);
+			//console.log(curTime);
 			
 		}
 	});
@@ -125,7 +119,7 @@ Music.prototype.getMusic = function(channel){
 Music.prototype.getLrc = function(sid){
 	var _this =this;
 	$.ajax({
-//		url:"http://api.jirengu.com/fm/getLyric.php",
+		//url:"http://api.jirengu.com/fm/getLyric.php",
 		url:"https://jirenguapi.applinzi.com/fm/getLyric.php",
 		dataType:"json",
 		type:"get",
@@ -150,7 +144,7 @@ Music.prototype.readLrc  = function(lrc){
 	
 	$(".lrc").empty();//清空歌词
 	var lrcArr = lrc.split("\n");
-	console.log(lrcArr);
+	//console.log(lrcArr);
 	
 	var reg1 = /\[\d\d\:\d\d(\.|\:)\d\d\]/g, //去掉时间[00:00.01]
 		reg2 = /\[\w+\:/g,					 //去掉[ti:]
@@ -178,7 +172,7 @@ Music.prototype.readLrc  = function(lrc){
 		lrcArr[i] = lrcArr[i].replace(reg1,"");
 		lrcArr[i] = lrcArr[i].replace(reg2,"");
 		lrcArr[i] = lrcArr[i].replace(reg3,"");
-		lrcArr[i] = lrcArr[i].replace(reg4,"by Z");
+		lrcArr[i] = lrcArr[i].replace(reg4,"by kk");
 		
 		var li = $('<li data-time="'+time+'">'+lrcArr[i]+'</li>');
 		ul.append(li);
